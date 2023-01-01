@@ -10,4 +10,9 @@ export class UserResolver {
   helloWorld() {
     return this.userService.helloWorld();
   }
+
+  @Query(() => [User])
+  getUsers() {
+    return this.userService.getUsers();
+  }
 }
