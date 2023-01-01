@@ -1,6 +1,7 @@
 import { UserService } from './user.service';
-import { Query, Resolver } from '@nestjs/graphql';
+import { Args, Query, Resolver } from '@nestjs/graphql';
 import { User } from './user.schema';
+import { NotFoundException } from '@nestjs/common';
 
 @Resolver(() => User)
 export class UserResolver {
@@ -14,5 +15,14 @@ export class UserResolver {
   @Query(() => [User])
   getUsers() {
     return this.userService.getUsers();
+  }
+
+  @Query(() => User)
+  getUser(@Args('id') id: number) {
+    const user = this.userService.findOneById(id);
+    if (!user) {
+      throw new NotFoundException(id);
+    }
+    return user;
   }
 }

@@ -9,4 +9,8 @@ export class JsonPlaceholderService {
   getUsers() {
     return axios.get<User[]>(`${this.serviceUrl}/users`);
   }
+
+  getUser(id) {
+    return axios.get<User>(`${this.serviceUrl}/users/${id}`);
+  }
 }

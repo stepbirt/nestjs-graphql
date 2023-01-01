@@ -16,4 +16,9 @@ export class UserService {
     const response = await this.jsonPlaceHolderService.getUsers();
     return response.data;
   }
+
+  async findOneById(id): Promise<User> {
+    const response = await this.jsonPlaceHolderService.getUser(id);
+    return response.data;
+  }
 }
