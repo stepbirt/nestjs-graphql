@@ -62,7 +62,7 @@ $ npm run test:cov
 
 ```bash
 query {
-  getUsers(id: 1) {
+  getUsers {
     id
     name
     username
